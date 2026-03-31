@@ -1,0 +1,10 @@
+cross-web==0.4.1
+graphql-core==3.2.8
+numpy==2.4.4
+packaging==26.0
+pandas==3.0.1
+python-dateutil==2.9.0.post0
+six==1.17.0
+strawberry-graphql==0.312.2
+typing-extensions==4.15.0
+tzdata==2025.3
