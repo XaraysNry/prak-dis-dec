@@ -4,7 +4,6 @@
 # Modul 8: Arsitektur Microservices untuk Sistem Terdistribusi  
 **Nama:** Aditya Wisnu Naraya  
 **NIM:** 235410069   
-ds
 ---
 
 ## 0. Pengantar
