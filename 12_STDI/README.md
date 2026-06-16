@@ -26,8 +26,10 @@ Teknologi P2P terdiri atas sekumpulan *nodes* yang terhubung secara langsung tan
 ## 1. Koneksi Antar Nodes (Simple Chat)
 Program ini mendemonstrasikan koneksi antar node menggunakan Python (`socket` dan `threading`), di mana satu program dapat bertindak sebagai penerima (*server*) dan pengirim (*client*) pesan secara bersamaan.
 
-12_STDI/images/image copy.png 12_STDI/images/image.png
-12_STDI/images/image copy.png
+![alt text](images/1.png)  
+
+![alt text](images/2.png)  
+
 *Gambar 1: Demonstrasi chat berhasil antara dua node yang saling terhubung.*
 
 ### 📝 Penjelasan Bagian Program
@@ -45,10 +47,7 @@ Berdasarkan kode `simple_chat.py`, berikut adalah penjelasan bagian-bagian kunci
 ## 2. Distributed Hash Table (DHT)
 DHT adalah mekanisme yang digunakan teknologi P2P untuk pencarian data tanpa server pusat. Program `dht.py` mensimulasikan lingkaran DHT (*DHT Ring*) di mana setiap node memiliki ID unik (hash 8-bit dari nama node), dan data disimpan di node yang ID-nya paling dekat (lebih besar atau sama dengan) dengan hash dari nama file.
 
-### 📸 Hasil Eksekusi Program
-> 💡 **Tips Screenshot:** Screenshot terminal yang menampilkan output saat program dijalankan. Pastikan terlihat bagian "Urutan Node dalam Lingkaran DHT", proses "[SIMPAN]", dan hasil "[PENCARIAN]" (baik yang SUKSES maupun GAGAL).
-
-![Screenshot Simulasi DHT](assets/ss_dht_simulation.png)  
+![Screenshot Simulasi DHT](assets/3.png)  
 *Gambar 2: Output simulasi penyimpanan dan pencarian data pada Lingkaran DHT.*
 
 ### 📝 Penjelasan Singkat Program
@@ -73,7 +72,7 @@ Torrent adalah teknologi P2P untuk berbagi file besar. File `.torrent` berisi me
 ### 📸 Hasil Eksekusi Program
 > 💡 **Tips Screenshot:** Screenshot terminal saat menjalankan program yang sudah dimodifikasi (menggunakan argumen). Tunjukkan perintah `python read_torrent.py namafile.torrent` dan output metadata yang berhasil muncul.
 
-![Screenshot Torrent Metadata](assets/ss_torrent_reader.png)  
+![Screenshot Torrent Metadata](assets/4.png)  
 *Gambar 3: Output pembacaan metadata dari file .torrent menggunakan argumen command-line.*
 
 ### 📝 Penjelasan Output Program
@@ -85,48 +84,3 @@ Program memberikan output tersebut karena:
 5. Menghitung `info_hash` dengan melakukan *bencode* ulang pada dictionary `'info'`, lalu di-hash menggunakan SHA1. Ini adalah identitas unik torrent tersebut di jaringan P2P.
 6. Menghitung jumlah *pieces* dengan membagi panjang string `'pieces'` dengan 20 (karena setiap hash piece berukuran 20 bytes).
 
-### 📝 Kode Program yang Dimodifikasi (Fleksibel dengan Argumen)
-Berikut adalah kode `read_torrent.py` yang telah diubah agar nama file `.torrent` dapat diterima sebagai parameter/argumen command-line, sesuai dengan tugas praktikum:
-
-```python
-import sys
-import bcoding
-import hashlib
-
-def baca_metadata_torrent(path_file_torrent):
-    print(f"=== ANALISIS METADATA TORRENT: {path_file_torrent} ===")
-    try:
-        with open(path_file_torrent, 'rb') as f:
-            data_torrent = bcoding.bdecode(f)
-            
-            print(f"[TRACKER URL] : {data_torrent.get('announce')}")
-            
-            info = data_torrent.get('info')
-            if info:
-                print(f"[NAMA FILE]   : {info.get('name')}")
-                print(f"[UKURAN FILE] : {info.get('length')} bytes")
-                print(f"[UKURAN PIECE]: {info.get('piece length')} bytes")
-                
-                info_bencoded = bcoding.bencode(info)
-                info_hash = hashlib.sha1(info_bencoded).hexdigest()
-                print(f"[INFO HASH]   : {info_hash}")
-                
-                jumlah_pieces = len(info.get('pieces')) // 20
-                print(f"[TOTAL PIECES]: {jumlah_pieces} potongan")
-            else:
-                print("[ERROR] Tidak ditemukan bagian 'info' pada file torrent.")
-                
-    except FileNotFoundError:
-        print(f"Gagal: File '{path_file_torrent}' tidak ditemukan. Pastikan path benar.")
-    except Exception as e:
-        print(f"Error saat membaca torrent: {e}")
-
-if __name__ == "__main__":
-    # Memastikan user memberikan argumen file torrent
-    if len(sys.argv) < 2:
-        print("Penggunaan: python read_torrent.py <namafile.torrent>")
-        print("Contoh   : python read_torrent.py FreeBSD-15.0-RELEASE-amd64-bootonly.iso.torrent")
-        sys.exit(1)
-        
-    file_torrent = sys.argv[1]
-    baca_metadata_torrent(file_torrent)
