@@ -26,8 +26,8 @@ Teknologi P2P terdiri atas sekumpulan *nodes* yang terhubung secara langsung tan
 ## 1. Koneksi Antar Nodes (Simple Chat)
 Program ini mendemonstrasikan koneksi antar node menggunakan Python (`socket` dan `threading`), di mana satu program dapat bertindak sebagai penerima (*server*) dan pengirim (*client*) pesan secara bersamaan.
 
-![alt text](images/image.png)
-![alt text](images/image-copy.png)
+![alt text](images/1.png)
+![alt text](images/2.png)
 *Gambar 1: Demonstrasi chat berhasil antara dua node yang saling terhubung.*
 
 ### 📝 Penjelasan Bagian Program
