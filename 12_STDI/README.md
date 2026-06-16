@@ -47,10 +47,7 @@ Berdasarkan kode `simple_chat.py`, berikut adalah penjelasan bagian-bagian kunci
 ## 2. Distributed Hash Table (DHT)
 DHT adalah mekanisme yang digunakan teknologi P2P untuk pencarian data tanpa server pusat. Program `dht.py` mensimulasikan lingkaran DHT (*DHT Ring*) di mana setiap node memiliki ID unik (hash 8-bit dari nama node), dan data disimpan di node yang ID-nya paling dekat (lebih besar atau sama dengan) dengan hash dari nama file.
 
-### 📸 Hasil Eksekusi Program
-> 💡 **Tips Screenshot:** Screenshot terminal yang menampilkan output saat program dijalankan. Pastikan terlihat bagian "Urutan Node dalam Lingkaran DHT", proses "[SIMPAN]", dan hasil "[PENCARIAN]" (baik yang SUKSES maupun GAGAL).
-
-![Screenshot Simulasi DHT](assets/ss_dht_simulation.png)  
+![Screenshot Simulasi DHT](assets/3.png)  
 *Gambar 2: Output simulasi penyimpanan dan pencarian data pada Lingkaran DHT.*
 
 ### 📝 Penjelasan Singkat Program
@@ -75,7 +72,7 @@ Torrent adalah teknologi P2P untuk berbagi file besar. File `.torrent` berisi me
 ### 📸 Hasil Eksekusi Program
 > 💡 **Tips Screenshot:** Screenshot terminal saat menjalankan program yang sudah dimodifikasi (menggunakan argumen). Tunjukkan perintah `python read_torrent.py namafile.torrent` dan output metadata yang berhasil muncul.
 
-![Screenshot Torrent Metadata](assets/ss_torrent_reader.png)  
+![Screenshot Torrent Metadata](assets/3.png)  
 *Gambar 3: Output pembacaan metadata dari file .torrent menggunakan argumen command-line.*
 
 ### 📝 Penjelasan Output Program
