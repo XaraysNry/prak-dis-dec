@@ -1,6 +1,6 @@
-Nama    : Aditya Wisnu Naraya
-NIM     : 235410069
-Kelas   : Informatika-2
+Nama    : Aditya Wisnu Naraya  
+NIM     : 235410069  
+Kelas   : Informatika-2  
 
 Bagian 1: Smart Contract Native Rust
 Metode ini menggunakan Rust murni tanpa framework tambahan.
